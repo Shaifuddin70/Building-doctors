@@ -28,15 +28,18 @@ require __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="section-tight">
+<section class="proof-band">
   <div class="container">
-    <div class="trust-strip reveal">
-      <?php foreach ($config['stats'] as $stat): ?>
-        <div class="trust-item">
-          <strong><?= e($stat['value']) ?></strong>
-          <span><?= e($stat['label']) ?></span>
-        </div>
-      <?php endforeach; ?>
+    <div class="proof-panel reveal">
+      <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings.</p>
+      <ul class="proof-stats">
+        <?php foreach ($config['stats'] as $stat): ?>
+          <li class="proof-stat">
+            <strong><?= e($stat['value']) ?></strong>
+            <span><?= e($stat['label']) ?></span>
+          </li>
+        <?php endforeach; ?>
+      </ul>
     </div>
   </div>
 </section>

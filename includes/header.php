@@ -38,39 +38,46 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
         </span>
       </a>
 
-      <nav class="nav" data-nav aria-label="Primary">
-        <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
-        <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
-        <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
-        <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
-        <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
-      </nav>
+      <div class="header-right">
+        <nav class="nav" data-nav aria-label="Primary">
+          <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
+          <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
+          <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+          <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
+          <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
+        </nav>
 
-      <div class="header-actions">
-        <a class="header-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
-        <a class="btn btn-primary btn-sm header-quote" href="/contact">Get a Quote</a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
+        <div class="header-actions">
+          <a class="btn btn-outline btn-sm header-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
+          <a class="btn btn-primary btn-sm header-quote" href="/contact">Get a Quote</a>
+          <label class="hamburger nav-toggle" data-nav-toggle aria-label="Open menu">
+            <input type="checkbox" data-nav-checkbox aria-controls="mobile-nav" aria-expanded="false">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path
+                class="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+              ></path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+        </div>
       </div>
     </div>
-
-    <div class="nav-overlay" data-nav-overlay hidden></div>
-    <aside class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
-      <div class="mobile-nav-top">
-        <span class="mobile-nav-title">Menu</span>
-        <button class="nav-close" type="button" data-nav-close aria-label="Close menu">×</button>
-      </div>
-      <nav class="mobile-nav-links" aria-label="Mobile">
-        <a href="/">Home</a>
-        <a href="/services">Services</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
-      <a class="btn btn-primary mobile-nav-cta" href="/contact">Get a Quote</a>
-      <a class="btn btn-outline mobile-nav-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
-    </aside>
   </header>
+
+  <div class="nav-overlay" data-nav-overlay hidden></div>
+  <aside class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
+    <nav class="mobile-nav-links" aria-label="Mobile">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <a class="btn btn-primary" href="/contact">Get a Quote</a>
+      <a class="btn btn-outline" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
+    </div>
+  </aside>
 
   <main id="main">

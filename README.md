@@ -13,10 +13,12 @@ PHP marketing site for **Building Doctors** — Ottawa permit drawings, drafting
 ## Local development
 
 ```bash
-php -S localhost:8080
+php -S localhost:8080 router.php
 ```
 
 Open http://localhost:8080
+
+Use `router.php` so clean URLs (`/services`, `/about`, etc.) work with PHP’s built-in server. On Apache hosting, `.htaccess` handles this instead.
 
 ## Formspree setup
 

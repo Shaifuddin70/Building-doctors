@@ -1,9 +1,9 @@
 (() => {
   const header = document.querySelector("[data-header]");
   const toggle = document.querySelector("[data-nav-toggle]");
+  const checkbox = document.querySelector("[data-nav-checkbox]");
   const mobileNav = document.querySelector("[data-mobile-nav]");
   const overlay = document.querySelector("[data-nav-overlay]");
-  const closeBtn = document.querySelector("[data-nav-close]");
 
   const onScroll = () => {
     if (!header) return;
@@ -14,23 +14,30 @@
   window.addEventListener("scroll", onScroll, { passive: true });
 
   const setNavOpen = (open) => {
-    if (!toggle || !mobileNav || !overlay) return;
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (!mobileNav || !overlay) return;
+    if (checkbox) {
+      checkbox.checked = open;
+      checkbox.setAttribute("aria-expanded", String(open));
+    }
+    if (toggle) {
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
     mobileNav.classList.toggle("is-open", open);
     mobileNav.setAttribute("aria-hidden", String(!open));
     overlay.classList.toggle("is-open", open);
-    overlay.hidden = !open;
+    if (open) {
+      overlay.removeAttribute("hidden");
+    } else {
+      overlay.setAttribute("hidden", "");
+    }
     document.body.classList.toggle("nav-open", open);
   };
 
-  if (toggle && mobileNav && overlay) {
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      setNavOpen(!open);
+  if (checkbox && mobileNav && overlay) {
+    checkbox.addEventListener("change", () => {
+      setNavOpen(checkbox.checked);
     });
 
-    closeBtn?.addEventListener("click", () => setNavOpen(false));
     overlay.addEventListener("click", () => setNavOpen(false));
 
     mobileNav.querySelectorAll("a").forEach((link) => {

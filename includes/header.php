@@ -22,44 +22,47 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260916">
   <?= json_ld_business($config) ?>
 </head>
 <body class="<?= e($bodyClass) ?>">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" data-header>
-    <div class="container header-inner">
-      <a class="brand" href="/" aria-label="Building Doctors home">
-        <img class="brand-mark" src="/assets/img/logo.svg" width="44" height="44" alt="">
-        <span class="brand-text">
-          <span class="brand-name">Building Doctors</span>
-          <span class="brand-tag"><?= e($config['tagline']) ?></span>
-        </span>
-      </a>
+    <div class="container">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Building Doctors home">
+          <img class="brand-mark" src="/assets/img/logo.svg" width="44" height="44" alt="">
+          <span class="brand-text">
+            <span class="brand-name">Building Doctors</span>
+            <span class="brand-tag"><?= e($config['tagline']) ?></span>
+          </span>
+        </a>
 
-      <div class="header-right">
-        <nav class="nav" data-nav aria-label="Primary">
-          <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
-          <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
-          <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
-          <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
-          <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
-        </nav>
+        <div class="header-right">
+          <nav class="nav d-none d-lg-flex" data-nav aria-label="Primary">
+            <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
+            <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
+            <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+            <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
+            <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
+          </nav>
 
-        <div class="header-actions">
-          <a class="btn btn-outline btn-sm header-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
-          <a class="btn btn-primary btn-sm header-quote" href="/contact">Get a Quote</a>
-          <label class="hamburger nav-toggle" data-nav-toggle aria-label="Open menu">
-            <input type="checkbox" data-nav-checkbox aria-controls="mobile-nav" aria-expanded="false">
-            <svg viewBox="0 0 32 32" aria-hidden="true">
-              <path
-                class="line line-top-bottom"
-                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-              ></path>
-              <path class="line" d="M7 16 27 16"></path>
-            </svg>
-          </label>
+          <div class="header-actions">
+            <a class="btn btn-outline btn-sm header-phone d-none d-lg-inline-flex" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
+            <a class="btn btn-primary btn-sm header-quote d-none d-lg-inline-flex" href="/contact">Get a Quote</a>
+            <label class="hamburger nav-toggle d-lg-none" data-nav-toggle aria-label="Open menu">
+              <input type="checkbox" data-nav-checkbox aria-controls="mobile-nav" aria-expanded="false">
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                  class="line line-top-bottom"
+                  d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                ></path>
+                <path class="line" d="M7 16 27 16"></path>
+              </svg>
+            </label>
+          </div>
         </div>
       </div>
     </div>

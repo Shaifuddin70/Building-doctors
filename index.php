@@ -13,53 +13,55 @@ $meta = [
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="hero" style="--hero-image: url('/assets/img/hero-home.jpg')">
-  <div class="container hero-inner">
-    <div class="hero-brand">
-      <img src="/assets/img/logo.svg" width="56" height="56" alt="">
-      <span class="hero-brand-name">Building Doctors</span>
-    </div>
-    <h1>We draw the plans that get your project approved.</h1>
-    <p class="hero-lead">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across the Greater Ottawa Area.</p>
-    <div class="btn-group">
-      <a class="btn btn-primary" href="/contact">Get a Quote</a>
-      <a class="btn btn-secondary" href="/services">View Services</a>
+<section class="site-hero" style="--hero-image: url('/assets/img/hero-home.jpg')">
+  <div class="container h-100">
+    <div class="row align-items-end site-hero-row">
+      <div class="col-12 col-lg-10 col-xl-9">
+        <p class="site-hero-eyebrow">Building Doctors · Ottawa</p>
+        <h1>We draw the plans that get your project approved.</h1>
+        <p class="site-hero-lead">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across Greater Ottawa.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="/contact">Get a Quote</a>
+          <a class="btn btn-secondary" href="/services">View Services</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="proof-band">
   <div class="container">
-    <div class="proof-panel reveal">
-      <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings.</p>
-      <ul class="proof-stats">
-        <?php foreach ($config['stats'] as $stat): ?>
-          <li class="proof-stat">
-            <strong><?= e($stat['value']) ?></strong>
-            <span><?= e($stat['label']) ?></span>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+    <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings.</p>
+    <div class="row g-4 g-lg-0 proof-stats">
+      <?php foreach ($config['stats'] as $stat): ?>
+        <div class="col-6 col-lg-3 proof-stat">
+          <strong><?= e($stat['value']) ?></strong>
+          <span><?= e($stat['label']) ?></span>
+        </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
 
 <section class="section section-white">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Our Services</span>
-      <h2>Design, drafting, and engineering — built for Ottawa approvals.</h2>
-      <p>From basement suites to additions and Committee of Adjustment applications, we deliver submission-ready packages that keep construction moving.</p>
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-12 col-lg-8">
+        <span class="eyebrow">Our Services</span>
+        <h2 class="section-title">Design, drafting, and engineering — built for Ottawa approvals.</h2>
+        <p class="section-lead">From basement suites to additions and Committee of Adjustment applications, we deliver submission-ready packages that keep construction moving.</p>
+      </div>
     </div>
-
-    <div class="grid-3">
+    <div class="row g-4">
       <?php foreach ($services as $i => $service): ?>
-        <article class="service-card reveal reveal-delay-<?= ($i % 3) + 1 ?>">
-          <div class="service-index"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></div>
-          <h3><?= e($service['title']) ?></h3>
-          <p><?= e($service['short']) ?></p>
-          <a class="link-arrow" href="/services#<?= e($service['id']) ?>">Learn more</a>
-        </article>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="service-card h-100 reveal">
+            <div class="service-index"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></div>
+            <h3><?= e($service['title']) ?></h3>
+            <p><?= e($service['short']) ?></p>
+            <a class="link-arrow" href="/services#<?= e($service['id']) ?>">Learn more</a>
+          </article>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
@@ -67,12 +69,14 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section section-navy">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">How It Works</span>
-      <h2>A clear path from first call to permit approval.</h2>
-      <p>Ottawa planning and permitting can be confusing. We keep the process organized so you always know the next step.</p>
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-12 col-lg-8">
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-title text-white">A clear path from first call to permit approval.</h2>
+        <p class="section-lead text-white-50">Ottawa planning and permitting can be confusing. We keep the process organized so you always know the next step.</p>
+      </div>
     </div>
-    <div class="process-grid">
+    <div class="row g-3">
       <?php
       $steps = [
           ['01', 'Scope & Review', 'Share your address and project goals. We confirm the likely permit path and drawing requirements.'],
@@ -80,13 +84,15 @@ require __DIR__ . '/includes/header.php';
           ['03', 'Drawings & Coordination', 'We prepare permit drawings and coordinate structural or other consultants when required.'],
           ['04', 'Submit & Respond', 'We support municipal submission and help respond to city comments through approval.'],
       ];
-      foreach ($steps as $i => $step):
+      foreach ($steps as $step):
       ?>
-        <article class="process-step reveal reveal-delay-<?= ($i % 4) + 1 ?>">
-          <div class="num"><?= e($step[0]) ?></div>
-          <h3><?= e($step[1]) ?></h3>
-          <p><?= e($step[2]) ?></p>
-        </article>
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="process-step h-100 reveal">
+            <div class="num"><?= e($step[0]) ?></div>
+            <h3><?= e($step[1]) ?></h3>
+            <p><?= e($step[2]) ?></p>
+          </article>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
@@ -94,21 +100,25 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section section-concrete">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Selected Work</span>
-      <h2>Projects that got built.</h2>
-      <p>Permit drawings, additions, structural packages, and site plans delivered across the Greater Ottawa Area.</p>
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-12 col-lg-8">
+        <span class="eyebrow">Selected Work</span>
+        <h2 class="section-title">Projects that got built.</h2>
+        <p class="section-lead">Permit drawings, additions, structural packages, and site plans delivered across the Greater Ottawa Area.</p>
+      </div>
     </div>
-    <div class="grid-3">
-      <?php foreach (array_slice($portfolio, 0, 3) as $i => $item): ?>
-        <article class="portfolio-card reveal reveal-delay-<?= ($i % 3) + 1 ?>" style="--card-image: url('<?= e($item['image']) ?>')">
-          <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
-          <h3><?= e($item['title']) ?></h3>
-          <p><?= e($item['summary']) ?></p>
-        </article>
+    <div class="row g-4">
+      <?php foreach (array_slice($portfolio, 0, 3) as $item): ?>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="portfolio-card h-100 reveal" style="--card-image: url('<?= e($item['image']) ?>')">
+            <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
+            <h3><?= e($item['title']) ?></h3>
+            <p><?= e($item['summary']) ?></p>
+          </article>
+        </div>
       <?php endforeach; ?>
     </div>
-    <div class="btn-group" style="margin-top: 2rem;">
+    <div class="mt-4">
       <a class="btn btn-outline" href="/portfolio">View Full Portfolio</a>
     </div>
   </div>
@@ -116,23 +126,27 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section section-white">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Client Proof</span>
-      <h2>Approved on the first submission.</h2>
-      <p>Homeowners, landlords, and contractors trust Building Doctors for drawings that clear municipal review.</p>
+    <div class="row mb-4 mb-lg-5">
+      <div class="col-12 col-lg-8">
+        <span class="eyebrow">Client Proof</span>
+        <h2 class="section-title">Approved on the first submission.</h2>
+        <p class="section-lead">Homeowners, landlords, and contractors trust Building Doctors for drawings that clear municipal review.</p>
+      </div>
     </div>
-    <div class="grid-3">
-      <?php foreach (array_slice($testimonials, 0, 3) as $i => $item): ?>
-        <article class="testimonial-card reveal reveal-delay-<?= ($i % 3) + 1 ?>">
-          <blockquote>“<?= e($item['quote']) ?>”</blockquote>
-          <div class="testimonial-person">
-            <div class="avatar"><?= e($item['initials']) ?></div>
-            <div>
-              <strong><?= e($item['name']) ?></strong>
-              <span><?= e($item['role']) ?></span>
+    <div class="row g-4">
+      <?php foreach (array_slice($testimonials, 0, 3) as $item): ?>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="testimonial-card h-100 reveal">
+            <blockquote>“<?= e($item['quote']) ?>”</blockquote>
+            <div class="testimonial-person">
+              <div class="avatar"><?= e($item['initials']) ?></div>
+              <div>
+                <strong><?= e($item['name']) ?></strong>
+                <span><?= e($item['role']) ?></span>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
@@ -140,10 +154,12 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section section-navy">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Service Area</span>
-      <h2>Serving Ottawa and surrounding communities.</h2>
-      <p>Locally based in Nepean with deep familiarity with City of Ottawa permit and planning processes.</p>
+    <div class="row mb-4">
+      <div class="col-12 col-lg-8">
+        <span class="eyebrow">Service Area</span>
+        <h2 class="section-title text-white">Serving Ottawa and surrounding communities.</h2>
+        <p class="section-lead text-white-50">Locally based in Nepean with deep familiarity with City of Ottawa permit and planning processes.</p>
+      </div>
     </div>
     <div class="area-cloud reveal">
       <?php foreach ($config['service_areas'] as $area): ?>
@@ -155,12 +171,12 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section">
   <div class="container">
-    <div class="cta-band reveal">
-      <div>
+    <div class="cta-band reveal row align-items-center g-4">
+      <div class="col-12 col-lg-7">
         <h2>Tell us what you’re building.</h2>
         <p>Most packages are ready in 10–14 business days. We respond within one business day.</p>
       </div>
-      <div class="btn-group">
+      <div class="col-12 col-lg-5 d-flex flex-wrap gap-3 justify-content-lg-end">
         <a class="btn btn-primary" href="/contact">Request a Quote</a>
         <a class="btn btn-secondary" href="tel:<?= e($config['phone_tel']) ?>">Call <?= e($config['phone']) ?></a>
       </div>

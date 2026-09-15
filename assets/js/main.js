@@ -59,12 +59,14 @@
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Force a reflow so opacity transition reliably starts
+            void entry.target.offsetWidth;
             entry.target.classList.add("is-visible");
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
     );
     reveals.forEach((el) => io.observe(el));
   } else {

@@ -15,34 +15,43 @@ $types = array_values(array_unique(array_map(static fn(array $p): string => $p['
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="page-hero page-hero-photo" style="--page-hero-image: url('/assets/img/portfolio-1.jpg')">
+<section class="site-hero" style="--hero-image: url('/assets/img/portfolio-1.jpg')">
   <div class="container">
-    <span class="eyebrow">Portfolio</span>
-    <h1>Every elevation. Every detail.</h1>
-    <p>From front elevations to foundation plans — drawings that give contractors what they need to build, and inspectors what they need to approve.</p>
+    <div class="row align-items-end site-hero-row">
+      <div class="col-12 col-lg-10 col-xl-9">
+        <p class="site-hero-eyebrow">Portfolio</p>
+        <h1>Projects that cleared review and got built.</h1>
+        <p class="site-hero-lead">Additions, permit sets, site plans, and structural packages across Nepean, Kanata, Barrhaven, Gloucester, Stittsville, and greater Ottawa.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-primary" href="/contact">Start a similar project</a>
+          <a class="btn btn-secondary" href="/services">Our services</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section section-white">
   <div class="container">
-    <div class="filters reveal" role="tablist" aria-label="Filter portfolio">
+    <div class="filters reveal mb-4" role="tablist" aria-label="Filter portfolio">
       <button class="filter-btn is-active" type="button" data-filter="all">All</button>
       <?php foreach ($types as $type): ?>
         <button class="filter-btn" type="button" data-filter="<?= e($type) ?>"><?= e($type) ?></button>
       <?php endforeach; ?>
     </div>
 
-    <div class="grid-3">
-      <?php foreach ($portfolio as $i => $item): ?>
-        <article
-          class="portfolio-card reveal reveal-delay-<?= ($i % 3) + 1 ?>"
-          data-type="<?= e($item['type']) ?>"
-          style="--card-image: url('<?= e($item['image']) ?>')"
-        >
-          <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
-          <h3><?= e($item['title']) ?></h3>
-          <p><?= e($item['summary']) ?></p>
-        </article>
+    <div class="row g-4">
+      <?php foreach ($portfolio as $item): ?>
+        <div class="col-12 col-md-6 col-lg-4" data-type="<?= e($item['type']) ?>">
+          <article
+            class="portfolio-card h-100 reveal"
+            style="--card-image: url('<?= e($item['image']) ?>')"
+          >
+            <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
+            <h3><?= e($item['title']) ?></h3>
+            <p><?= e($item['summary']) ?></p>
+          </article>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
@@ -50,12 +59,14 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section">
   <div class="container">
-    <div class="cta-band reveal">
-      <div>
+    <div class="cta-band reveal row align-items-center g-4">
+      <div class="col-12 col-lg-8">
         <h2>Have a project like these?</h2>
         <p>Send your address and a short description — we’ll confirm the permit path and next steps.</p>
       </div>
-      <a class="btn btn-primary" href="/contact">Start Your Project</a>
+      <div class="col-12 col-lg-4 d-flex justify-content-lg-end">
+        <a class="btn btn-primary" href="/contact">Start Your Project</a>
+      </div>
     </div>
   </div>
 </section>

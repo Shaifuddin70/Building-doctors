@@ -7,7 +7,7 @@ $currentPage = 'services';
 $meta = [
     'title' => 'Building Permit & Drafting Services in Ottawa',
     'description' => 'Permit drawings, home additions, basement secondary suites, site plans, Committee of Adjustment support, and P.Eng structural reports for Greater Ottawa.',
-    'path' => '/services.php',
+    'path' => '/services',
 ];
 
 $permitTriggers = [
@@ -95,7 +95,7 @@ require __DIR__ . '/includes/header.php';
       <?php endforeach; ?>
     </ul>
     <div class="btn-group" style="margin-top: 2rem;">
-      <a class="btn btn-primary" href="/contact.php">Ask About Your Project</a>
+      <a class="btn btn-primary" href="/contact">Ask About Your Project</a>
     </div>
   </div>
 </section>

@@ -40,15 +40,15 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
 
       <nav class="nav" data-nav aria-label="Primary">
         <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
-        <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services.php">Services</a>
-        <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio.php">Portfolio</a>
-        <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about.php">About</a>
-        <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact.php">Contact</a>
+        <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
+        <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+        <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
+        <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
       </nav>
 
       <div class="header-actions">
         <a class="header-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
-        <a class="btn btn-primary btn-sm header-quote" href="/contact.php">Get a Quote</a>
+        <a class="btn btn-primary btn-sm header-quote" href="/contact">Get a Quote</a>
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -63,12 +63,12 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
       </div>
       <nav class="mobile-nav-links" aria-label="Mobile">
         <a href="/">Home</a>
-        <a href="/services.php">Services</a>
-        <a href="/portfolio.php">Portfolio</a>
-        <a href="/about.php">About</a>
-        <a href="/contact.php">Contact</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </nav>
-      <a class="btn btn-primary mobile-nav-cta" href="/contact.php">Get a Quote</a>
+      <a class="btn btn-primary mobile-nav-cta" href="/contact">Get a Quote</a>
       <a class="btn btn-outline mobile-nav-phone" href="tel:<?= e($config['phone_tel']) ?>"><?= e($config['phone']) ?></a>
     </aside>
   </header>

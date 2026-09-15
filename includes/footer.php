@@ -23,7 +23,7 @@ declare(strict_types=1);
         <h2 class="footer-heading">Services</h2>
         <ul class="footer-list">
           <?php foreach (array_slice($services, 0, 6) as $service): ?>
-            <li><a href="/services.php#<?= e($service['id']) ?>"><?= e($service['title']) ?></a></li>
+            <li><a href="/services#<?= e($service['id']) ?>"><?= e($service['title']) ?></a></li>
           <?php endforeach; ?>
         </ul>
       </div>

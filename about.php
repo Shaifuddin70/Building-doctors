@@ -7,7 +7,7 @@ $currentPage = 'about';
 $meta = [
     'title' => 'About Building Doctors — Ottawa Drafting & Engineering',
     'description' => 'Building Doctors is a Greater Ottawa drafting and design practice backed by P.Eng licensed engineers with municipal and geotechnical experience.',
-    'path' => '/about.php',
+    'path' => '/about',
 ];
 
 require __DIR__ . '/includes/header.php';
@@ -81,7 +81,7 @@ require __DIR__ . '/includes/header.php';
         <h2>Ready to talk through your project?</h2>
         <p>Call <?= e($config['phone']) ?> or send a short brief — we reply within one business day.</p>
       </div>
-      <a class="btn btn-primary" href="/contact.php">Contact Us</a>
+      <a class="btn btn-primary" href="/contact">Contact Us</a>
     </div>
   </div>
 </section>

@@ -7,7 +7,7 @@ $currentPage = 'portfolio';
 $meta = [
     'title' => 'Ottawa Permit Drawing Portfolio',
     'description' => 'Selected Building Doctors projects across Ottawa, Nepean, Kanata, Barrhaven, Gloucester, and Stittsville — additions, permits, site plans, and structural reports.',
-    'path' => '/portfolio.php',
+    'path' => '/portfolio',
 ];
 
 $types = array_values(array_unique(array_map(static fn(array $p): string => $p['type'], $portfolio)));
@@ -55,7 +55,7 @@ require __DIR__ . '/includes/header.php';
         <h2>Have a project like these?</h2>
         <p>Send your address and a short description — we’ll confirm the permit path and next steps.</p>
       </div>
-      <a class="btn btn-primary" href="/contact.php">Start Your Project</a>
+      <a class="btn btn-primary" href="/contact">Start Your Project</a>
     </div>
   </div>
 </section>

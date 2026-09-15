@@ -7,7 +7,7 @@ $currentPage = 'contact';
 $meta = [
     'title' => 'Contact Building Doctors — Ottawa Permit Quotes',
     'description' => 'Request a quote for permit drawings, basement suites, additions, site plans, or structural reports in Ottawa. Call 613-213-0789 or email buildingdoctors@outlook.com.',
-    'path' => '/contact.php',
+    'path' => '/contact',
 ];
 
 require __DIR__ . '/includes/header.php';
@@ -66,7 +66,7 @@ require __DIR__ . '/includes/header.php';
 
       <form action="<?= e($config['formspree_endpoint']) ?>" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Building Doctors quote request">
-        <input type="hidden" name="_next" value="<?= e(rtrim($config['domain'], '/') . '/contact.php?status=success') ?>">
+        <input type="hidden" name="_next" value="<?= e(rtrim($config['domain'], '/') . '/contact?status=success') ?>">
         <input type="text" name="_gotcha" value="" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="form-grid two">

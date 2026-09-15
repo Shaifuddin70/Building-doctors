@@ -5,10 +5,10 @@ PHP marketing site for **Building Doctors** — Ottawa permit drawings, drafting
 ## Pages
 
 - `/` — Home
-- `/services.php` — Services
-- `/portfolio.php` — Portfolio
-- `/about.php` — About
-- `/contact.php` — Contact (Formspree)
+- `/services` — Services
+- `/portfolio` — Portfolio
+- `/about` — About
+- `/contact` — Contact (Formspree)
 
 ## Local development
 

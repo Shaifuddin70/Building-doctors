@@ -22,8 +22,8 @@ require __DIR__ . '/includes/header.php';
     <h1>We draw the plans that get your project approved.</h1>
     <p class="hero-lead">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across the Greater Ottawa Area.</p>
     <div class="btn-group">
-      <a class="btn btn-primary" href="/contact.php">Get a Quote</a>
-      <a class="btn btn-secondary" href="/services.php">View Services</a>
+      <a class="btn btn-primary" href="/contact">Get a Quote</a>
+      <a class="btn btn-secondary" href="/services">View Services</a>
     </div>
   </div>
 </section>
@@ -55,7 +55,7 @@ require __DIR__ . '/includes/header.php';
           <div class="service-index"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></div>
           <h3><?= e($service['title']) ?></h3>
           <p><?= e($service['short']) ?></p>
-          <a class="link-arrow" href="/services.php#<?= e($service['id']) ?>">Learn more</a>
+          <a class="link-arrow" href="/services#<?= e($service['id']) ?>">Learn more</a>
         </article>
       <?php endforeach; ?>
     </div>
@@ -106,7 +106,7 @@ require __DIR__ . '/includes/header.php';
       <?php endforeach; ?>
     </div>
     <div class="btn-group" style="margin-top: 2rem;">
-      <a class="btn btn-outline" href="/portfolio.php">View Full Portfolio</a>
+      <a class="btn btn-outline" href="/portfolio">View Full Portfolio</a>
     </div>
   </div>
 </section>
@@ -158,7 +158,7 @@ require __DIR__ . '/includes/header.php';
         <p>Most packages are ready in 10–14 business days. We respond within one business day.</p>
       </div>
       <div class="btn-group">
-        <a class="btn btn-primary" href="/contact.php">Request a Quote</a>
+        <a class="btn btn-primary" href="/contact">Request a Quote</a>
         <a class="btn btn-secondary" href="tel:<?= e($config['phone_tel']) ?>">Call <?= e($config['phone']) ?></a>
       </div>
     </div>

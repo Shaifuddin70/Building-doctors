@@ -1191,33 +1191,154 @@ body.nav-open {
 /* about / form helpers above */
 
 /* Services page — jump nav + custom blocks */
-.service-jump-link {
+.service-jump-section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.service-jump-head {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.service-jump-head .section-title {
+  margin: 0;
+}
+
+.service-jump-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.service-jump-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   height: 100%;
-  padding: 0.9rem 0.85rem;
+  padding: 1.1rem 1.15rem;
   background: var(--white);
   border: 1px solid var(--line);
   color: var(--navy);
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.25;
   text-decoration: none;
-  transition: border-color 0.25s, transform 0.25s var(--ease);
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease);
 }
 
-.service-jump-link span {
+.service-jump-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--copper);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s var(--ease);
+}
+
+.service-jump-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  color: var(--copper-2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.service-jump-icon svg,
+.service-jump-arrow svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-jump-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.service-jump-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.service-jump-index {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: var(--copper);
 }
 
-.service-jump-link:hover {
-  border-color: var(--copper);
+.service-jump-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--navy);
-  transform: translateY(-2px);
+}
+
+.service-jump-tagline {
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.service-jump-arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s var(--ease);
+}
+
+.service-jump-arrow svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.service-jump-link:hover,
+.service-jump-link:focus-visible {
+  border-color: rgba(184, 115, 51, 0.45);
+  box-shadow: var(--shadow);
+  color: var(--navy);
+  transform: translateY(-3px);
+}
+
+.service-jump-link:hover::before,
+.service-jump-link:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.service-jump-link:hover .service-jump-icon,
+.service-jump-link:focus-visible .service-jump-icon {
+  background: var(--copper);
+  color: var(--white);
+}
+
+.service-jump-link:hover .service-jump-arrow,
+.service-jump-link:focus-visible .service-jump-arrow {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  transform: translateY(2px);
 }
 
 .section-navy .service-index,

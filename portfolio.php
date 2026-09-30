@@ -6,7 +6,7 @@ require_once __DIR__ . '/includes/helpers.php';
 $currentPage = 'portfolio';
 $meta = [
     'title' => 'Ottawa Permit Drawing Portfolio',
-    'description' => 'Selected Building Doctors projects across Ottawa, Nepean, Kanata, Barrhaven, Gloucester, and Stittsville — additions, permits, site plans, and structural reports.',
+    'description' => 'Selected Building Doctors work — basement walkouts, architectural drawing sets, site plans, and structural steel drawings for projects across Greater Ottawa.',
     'path' => '/portfolio',
 ];
 
@@ -21,7 +21,7 @@ require __DIR__ . '/includes/header.php';
       <div class="col-12 col-lg-10 col-xl-9">
         <p class="site-hero-eyebrow">Portfolio</p>
         <h1>Projects that cleared review and got built.</h1>
-        <p class="site-hero-lead">Additions, permit sets, site plans, and structural packages across Nepean, Kanata, Barrhaven, Gloucester, Stittsville, and greater Ottawa.</p>
+        <p class="site-hero-lead">Basement walkouts, architectural drawing sets, site plans, and structural steel packages. Open any project to view the drawings.</p>
         <div class="d-flex flex-wrap gap-3">
           <a class="btn btn-primary" href="/contact">Start a similar project</a>
           <a class="btn btn-secondary" href="/services">Our services</a>
@@ -43,19 +43,16 @@ require __DIR__ . '/includes/header.php';
     <div class="row g-4">
       <?php foreach ($portfolio as $item): ?>
         <div class="col-12 col-md-6 col-lg-4" data-type="<?= e($item['type']) ?>">
-          <article
-            class="portfolio-card h-100 reveal"
-            style="--card-image: url('<?= e($item['image']) ?>')"
-          >
-            <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
-            <h3><?= e($item['title']) ?></h3>
-            <p><?= e($item['summary']) ?></p>
-          </article>
+          <?php require __DIR__ . '/includes/portfolio-card.php'; ?>
         </div>
       <?php endforeach; ?>
     </div>
   </div>
 </section>
+
+<?php foreach ($portfolio as $item) {
+    require __DIR__ . '/includes/portfolio-modal.php';
+} ?>
 
 <section class="section">
   <div class="container">

@@ -36,7 +36,13 @@ Use `router.php` so clean URLs (`/services`, `/about`, etc.) work with PHP’s b
 
 ## Images
 
-Hero and portfolio photos are from [Pexels](https://www.pexels.com/) (free stock). Replace with real project photos when available.
+Hero and remaining section photos are from [Pexels](https://www.pexels.com/) (free stock).
+
+Real project work lives in `assets/img/works/` and is listed in `content/portfolio.php`:
+
+- Photos and drawing images (`*.png`) are used directly.
+- Drawing sheets are kept as PDFs, with a first-page JPG preview in `assets/img/works/previews/` (same file name). Regenerate a preview whenever a PDF changes.
+- A project with a `compare` entry gets a before/after slider; `gallery` items with a `pdf` key link to the original sheet.
 
 ## Brand
 

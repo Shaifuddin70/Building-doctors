@@ -17,13 +17,13 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0B1F33">
   <?php render_seo($meta ?? [], $config); ?>
-  <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/assets/img/logo-mark.png">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260916">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20261001f">
   <?= json_ld_business($config) ?>
 </head>
 <body class="<?= e($bodyClass) ?>">
@@ -33,7 +33,7 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
     <div class="container">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Building Doctors home">
-          <img class="brand-mark" src="/assets/img/logo.svg" width="44" height="44" alt="">
+          <img class="brand-mark" src="/assets/img/brand-mark.png" width="161" height="128" alt="">
           <span class="brand-text">
             <span class="brand-name">Building Doctors</span>
             <span class="brand-tag"><?= e($config['tagline']) ?></span>

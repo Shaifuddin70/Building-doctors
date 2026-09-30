@@ -38,7 +38,7 @@ return [
         ['value' => '10–14', 'label' => 'Day Avg. Turnaround'],
     ],
     'social' => [
-        'instagram' => '',
+        'instagram' => 'https://www.instagram.com/buildingdoctorz',
         'facebook' => '',
     ],
     // Create a form at https://formspree.io and paste your endpoint below.

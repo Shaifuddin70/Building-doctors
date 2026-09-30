@@ -87,4 +87,12 @@
       });
     });
   });
+
+  document.querySelectorAll("[data-compare]").forEach((slider) => {
+    const range = slider.querySelector("[data-compare-range]");
+    if (!range) return;
+    const update = () => slider.style.setProperty("--pos", `${range.value}%`);
+    range.addEventListener("input", update);
+    update();
+  });
 })();

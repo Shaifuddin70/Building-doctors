@@ -1,6 +1,27 @@
 <?php
 declare(strict_types=1);
 
+/*
+ * Front controller fallback: servers that rewrite unknown URLs to index.php
+ * (e.g. ServBay/Nginx `try_files ... /index.php`) ignore .htaccess, so dispatch
+ * clean URLs like /services to their page here.
+ */
+$requestPath = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/');
+$requestPage = preg_replace('/\.php$/', '', $requestPath);
+
+if ($requestPage !== '' && $requestPage !== 'index') {
+    $pages = ['services', 'portfolio', 'about', 'contact'];
+    if (in_array($requestPage, $pages, true)) {
+        require __DIR__ . '/' . $requestPage . '.php';
+        return;
+    }
+
+    http_response_code(404);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo "404 Not Found\n";
+    return;
+}
+
 require_once __DIR__ . '/includes/helpers.php';
 
 $currentPage = 'home';
@@ -110,11 +131,7 @@ require __DIR__ . '/includes/header.php';
     <div class="row g-4">
       <?php foreach (array_slice($portfolio, 0, 3) as $item): ?>
         <div class="col-12 col-md-6 col-lg-4">
-          <article class="portfolio-card h-100 reveal" style="--card-image: url('<?= e($item['image']) ?>')">
-            <div class="portfolio-meta"><?= e($item['type']) ?> · <?= e($item['location']) ?></div>
-            <h3><?= e($item['title']) ?></h3>
-            <p><?= e($item['summary']) ?></p>
-          </article>
+          <?php require __DIR__ . '/includes/portfolio-card.php'; ?>
         </div>
       <?php endforeach; ?>
     </div>
@@ -123,6 +140,10 @@ require __DIR__ . '/includes/header.php';
     </div>
   </div>
 </section>
+
+<?php foreach (array_slice($portfolio, 0, 3) as $item) {
+    require __DIR__ . '/includes/portfolio-modal.php';
+} ?>
 
 <section class="section section-white">
   <div class="container">

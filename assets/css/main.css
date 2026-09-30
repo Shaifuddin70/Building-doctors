@@ -153,10 +153,9 @@ body.nav-open .site-header {
 
 .brand-mark,
 .brand img {
-  border-radius: 10px;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: 46px;
 }
 
 .brand-text {
@@ -832,7 +831,7 @@ body.nav-open {
 }
 
 .portfolio-card {
-  min-height: 320px;
+  min-height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -841,8 +840,8 @@ body.nav-open {
   color: var(--white);
   border: 0;
   background:
-    linear-gradient(180deg, transparent 15%, rgba(11, 31, 51, 0.92) 100%),
-    var(--card-image, none) center / cover no-repeat,
+    linear-gradient(180deg, rgba(11, 31, 51, 0.1) 0%, rgba(11, 31, 51, 0.72) 42%, rgba(11, 31, 51, 0.95) 78%),
+    var(--card-image, none) var(--card-position, center) / cover no-repeat,
     var(--navy);
 }
 
@@ -875,6 +874,237 @@ body.nav-open {
 
 .portfolio-card p {
   color: rgba(255, 255, 255, 0.78);
+}
+
+/* Bootstrap's stretched-link needs a static position so its ::after spans the whole card */
+.portfolio-card > .portfolio-card-link {
+  position: static;
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.portfolio-card-link .link-arrow {
+  color: var(--white);
+}
+
+.portfolio-card-link:focus-visible {
+  outline: none;
+}
+
+.portfolio-card:has(.portfolio-card-link:focus-visible) {
+  outline: 2px solid var(--copper-2);
+  outline-offset: 3px;
+}
+
+/* Project modal */
+@media (min-width: 576px) {
+  .project-modal .modal-dialog {
+    max-width: min(960px, calc(100vw - 3rem));
+  }
+}
+
+.project-modal .modal-content {
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--concrete-2);
+}
+
+.project-modal .modal-header {
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  background: var(--navy);
+  border-bottom: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.project-modal .modal-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  color: var(--white);
+}
+
+.project-modal .btn-close {
+  filter: invert(1) grayscale(1) brightness(2);
+  margin-top: 0.25rem;
+}
+
+.project-modal .modal-body {
+  padding: 1.5rem;
+}
+
+.project-modal .modal-footer {
+  border-top: 1px solid var(--line);
+  padding: 1rem 1.5rem;
+}
+
+.project-summary {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 60rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-modal .compare {
+  margin-bottom: 1.25rem;
+}
+
+.project-shot {
+  display: block;
+  height: 100%;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--navy);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.project-shot:hover,
+.project-shot:focus-visible {
+  border-color: var(--copper);
+  box-shadow: var(--shadow);
+  color: var(--navy);
+}
+
+.project-shot img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  background: var(--white);
+}
+
+.project-gallery .col-md-6 .project-shot img {
+  aspect-ratio: 4 / 3;
+  padding: 0.5rem;
+}
+
+.project-shot-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--line);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.project-shot-action {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.project-shot-action::after {
+  content: " ↗";
+}
+
+/* Before / after slider */
+.compare {
+  --pos: 50%;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.compare-img {
+  width: 100%;
+  height: auto;
+}
+
+.compare-before {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.compare-tag {
+  position: absolute;
+  top: 1rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(11, 31, 51, 0.82);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.compare-tag-before {
+  left: 1rem;
+}
+
+.compare-tag-after {
+  right: 1rem;
+  background: var(--copper);
+}
+
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  background: var(--white);
+  transform: translateX(-50%);
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(11, 31, 51, 0.35);
+}
+
+.compare-handle::after {
+  content: "‹ ›";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--copper);
+  border: 3px solid var(--white);
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  box-shadow: 0 6px 18px rgba(11, 31, 51, 0.35);
+}
+
+.compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.compare:has(.compare-range:focus-visible) .compare-handle::after {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.service-compare h3 {
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  color: var(--navy);
+  margin-bottom: 0.75rem;
 }
 
 /* Testimonials */
@@ -935,10 +1165,11 @@ body.nav-open {
 }
 
 /* CTA band */
+/* Also a Bootstrap .row: spacing comes from its g-* gutters, so no `gap` and no negative row margins */
 .cta-band {
-  gap: 1.5rem;
   align-items: center;
-  padding: 2.5rem;
+  margin: 0;
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3rem);
   background:
     linear-gradient(135deg, rgba(184, 115, 51, 0.18), transparent 50%),
     var(--navy);
@@ -1379,6 +1610,43 @@ body.nav-open {
   color: var(--white);
 }
 
+.footer-social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+}
+
+.site-footer .social-link {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s var(--ease), filter 0.25s;
+}
+
+.social-link svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social-link-whatsapp {
+  background: #25d366;
+}
+
+.social-link-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.site-footer .social-link:hover,
+.site-footer .social-link:focus-visible {
+  color: var(--white);
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
 .footer-heading {
   font-size: 0.78rem;
   font-weight: 700;
@@ -1523,8 +1791,7 @@ body.nav-open {
 @media (min-width: 900px) {
   .brand-mark,
   .brand img {
-    width: 44px;
-    height: 44px;
+    height: 54px;
   }
 
   .brand-name {

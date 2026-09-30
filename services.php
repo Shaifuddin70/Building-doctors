@@ -92,6 +92,21 @@ require __DIR__ . '/includes/header.php';
             </div>
           <?php endforeach; ?>
         </div>
+        <?php if (!empty($service['compare'])):
+            $compare = $service['compare'];
+        ?>
+          <div class="row g-4 g-lg-5 align-items-center mt-2 service-compare reveal">
+            <div class="col-12 col-lg-7">
+              <?php require __DIR__ . '/includes/compare-slider.php'; ?>
+            </div>
+            <div class="col-12 col-lg-5">
+              <p class="service-tagline">Recent project</p>
+              <h3><?= e($compare['title']) ?></h3>
+              <p class="service-desc"><?= e($compare['caption']) ?></p>
+              <a class="link-arrow" href="/portfolio">See more of our work</a>
+            </div>
+          </div>
+        <?php endif; ?>
         <div class="mt-4">
           <a class="btn btn-primary" href="/contact?service=<?= urlencode($service['title']) ?>">Request this service</a>
         </div>

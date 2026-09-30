@@ -32,10 +32,10 @@ return [
         'Greater Ottawa Area',
     ],
     'stats' => [
-        ['value' => '100+', 'label' => 'Projects Delivered'],
-        ['value' => '98%', 'label' => 'Permit Approval Rate'],
-        ['value' => 'P.Eng', 'label' => 'Licensed in Ontario'],
-        ['value' => '10–14', 'label' => 'Day Avg. Turnaround'],
+        ['value' => '100+', 'label' => 'Projects Delivered', 'icon' => 'blueprint'],
+        ['value' => '98%', 'label' => 'Permit Approval Rate', 'icon' => 'approved'],
+        ['value' => 'P.Eng', 'label' => 'Licensed in Ontario', 'icon' => 'license'],
+        ['value' => '10–14', 'label' => 'Day Avg. Turnaround', 'icon' => 'clock'],
     ],
     'social' => [
         'instagram' => 'https://www.instagram.com/buildingdoctorz',

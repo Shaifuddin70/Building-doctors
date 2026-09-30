@@ -88,6 +88,26 @@
     });
   });
 
+  const fab = document.querySelector("[data-fab]");
+  const fabToggle = fab?.querySelector("[data-fab-toggle]");
+
+  if (fab && fabToggle) {
+    const setFabOpen = (open) => {
+      fab.classList.toggle("is-open", open);
+      fabToggle.setAttribute("aria-expanded", String(open));
+      fabToggle.setAttribute("aria-label", open ? "Close contact options" : "Open contact options");
+    };
+
+    fabToggle.addEventListener("click", () => setFabOpen(!fab.classList.contains("is-open")));
+    fab.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setFabOpen(false)));
+    document.addEventListener("click", (event) => {
+      if (!fab.contains(event.target)) setFabOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setFabOpen(false);
+    });
+  }
+
   document.querySelectorAll("[data-compare]").forEach((slider) => {
     const range = slider.querySelector("[data-compare-range]");
     if (!range) return;

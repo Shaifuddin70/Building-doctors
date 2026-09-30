@@ -52,14 +52,19 @@ require __DIR__ . '/includes/header.php';
 
 <section class="proof-band">
   <div class="container">
-    <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings.</p>
-    <div class="row g-4 g-lg-0 proof-stats">
-      <?php foreach ($config['stats'] as $stat): ?>
-        <div class="col-6 col-lg-3 proof-stat">
-          <strong><?= e($stat['value']) ?></strong>
-          <span><?= e($stat['label']) ?></span>
-        </div>
-      <?php endforeach; ?>
+    <div class="proof-card">
+      <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings</p>
+      <ul class="proof-stats">
+        <?php foreach ($config['stats'] as $stat): ?>
+          <li class="proof-stat">
+            <span class="proof-icon"><?= icon($stat['icon'] ?? '') ?></span>
+            <div>
+              <strong><?= e($stat['value']) ?></strong>
+              <span class="proof-label"><?= e($stat['label']) ?></span>
+            </div>
+          </li>
+        <?php endforeach; ?>
+      </ul>
     </div>
   </div>
 </section>

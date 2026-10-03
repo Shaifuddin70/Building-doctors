@@ -40,6 +40,17 @@
 
     overlay.addEventListener("click", () => setNavOpen(false));
 
+    mobileNav.querySelectorAll("[data-mobile-expand]").forEach((button) => {
+      const panel = document.getElementById(button.getAttribute("aria-controls"));
+      button.addEventListener("click", () => {
+        const open = button.getAttribute("aria-expanded") !== "true";
+        button.setAttribute("aria-expanded", String(open));
+        button.setAttribute("aria-label", open ? "Hide services" : "Show services");
+        button.closest("[data-mobile-group]")?.classList.toggle("is-expanded", open);
+        if (panel) panel.hidden = !open;
+      });
+    });
+
     mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setNavOpen(false));
     });
@@ -85,6 +96,29 @@
         const show = value === "all" || type === value;
         item.hidden = !show;
       });
+    });
+  });
+
+  document.querySelectorAll("[data-nav-dropdown]").forEach((dropdown) => {
+    const toggle = dropdown.querySelector(".nav-dropdown-toggle");
+    const setExpanded = (open) => toggle.setAttribute("aria-expanded", String(open));
+    dropdown.addEventListener("mouseenter", () => setExpanded(true));
+    dropdown.addEventListener("mouseleave", () => {
+      setExpanded(false);
+      dropdown.classList.remove("is-dismissed");
+    });
+    dropdown.addEventListener("focusin", () => setExpanded(true));
+    dropdown.addEventListener("focusout", (event) => {
+      if (!dropdown.contains(event.relatedTarget)) {
+        setExpanded(false);
+        dropdown.classList.remove("is-dismissed");
+      }
+    });
+    dropdown.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      dropdown.classList.add("is-dismissed");
+      setExpanded(false);
+      toggle.focus();
     });
   });
 

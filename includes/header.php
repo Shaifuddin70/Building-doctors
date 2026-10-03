@@ -15,15 +15,15 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0B1F33">
+  <meta name="theme-color" content="#000000">
   <?php render_seo($meta ?? [], $config); ?>
   <link rel="icon" href="/assets/img/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20261001k">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20261003v">
   <?= json_ld_business($config) ?>
 </head>
 <body class="<?= e($bodyClass) ?>">
@@ -43,7 +43,25 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
         <div class="header-right">
           <nav class="nav d-none d-lg-flex" data-nav aria-label="Primary">
             <a class="nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
-            <a class="nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
+            <div class="nav-dropdown" data-nav-dropdown>
+              <a class="nav-link nav-dropdown-toggle<?= is_active('services', $currentPage) ?>" href="/services" aria-haspopup="true" aria-expanded="false" aria-controls="services-menu">
+                Services <?= icon('chevron-down') ?>
+              </a>
+              <div class="nav-dropdown-menu" id="services-menu">
+                <div class="nav-dropdown-panel">
+                  <?php foreach ($services as $service): ?>
+                    <a class="nav-dropdown-item" href="/services#<?= e($service['id']) ?>">
+                      <span class="nav-dropdown-icon"><?= service_icon($service['id']) ?></span>
+                      <span class="nav-dropdown-text">
+                        <span class="nav-dropdown-title"><?= e($service['title']) ?></span>
+                        <span class="nav-dropdown-tagline"><?= e($service['tagline'] ?? '') ?></span>
+                      </span>
+                    </a>
+                  <?php endforeach; ?>
+                  <a class="nav-dropdown-all" href="/services">View all services <?= icon('arrow-right') ?></a>
+                </div>
+              </div>
+            </div>
             <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
             <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
             <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
@@ -68,14 +86,54 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
     </div>
   </header>
 
+  <?php
+  $tickerItems = [
+      'Design & Drafting',
+      'Permit Drawings',
+      'Home Additions',
+      'Greater Ottawa Area',
+      'P.Eng Licensed Engineers',
+      'Basement Permits',
+      'Site Plans',
+      'Renovation Plans',
+      'Committee of Adjustment',
+      'Structural Reports',
+  ];
+  ?>
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <?php for ($pass = 0; $pass < 2; $pass++): ?>
+        <?php foreach ($tickerItems as $item): ?>
+          <span class="ticker-item"><?= e($item) ?></span><span class="ticker-sep">✦</span>
+        <?php endforeach; ?>
+      <?php endfor; ?>
+    </div>
+  </div>
+
   <div class="nav-overlay" data-nav-overlay hidden></div>
   <aside class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
     <nav class="mobile-nav-links" aria-label="Mobile">
-      <a href="/">Home</a>
-      <a href="/services">Services</a>
-      <a href="/portfolio">Portfolio</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+      <a class="mobile-nav-link<?= is_active('home', $currentPage) ?>" href="/">Home</a>
+      <?php $servicesOpen = $currentPage === 'services'; ?>
+      <div class="mobile-nav-group<?= $servicesOpen ? ' is-expanded' : '' ?>" data-mobile-group>
+        <div class="mobile-nav-row">
+          <a class="mobile-nav-link<?= is_active('services', $currentPage) ?>" href="/services">Services</a>
+          <button class="mobile-nav-expand" type="button" aria-expanded="<?= $servicesOpen ? 'true' : 'false' ?>" aria-controls="mobile-services" aria-label="<?= $servicesOpen ? 'Hide services' : 'Show services' ?>" data-mobile-expand>
+            <?= icon('chevron-down') ?>
+          </button>
+        </div>
+        <div class="mobile-nav-services" id="mobile-services"<?= $servicesOpen ? '' : ' hidden' ?>>
+          <?php foreach ($services as $service): ?>
+            <a href="/services#<?= e($service['id']) ?>">
+              <span class="nav-dropdown-icon"><?= service_icon($service['id']) ?></span>
+              <?= e($service['title']) ?>
+            </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <a class="mobile-nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+      <a class="mobile-nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
+      <a class="mobile-nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
     </nav>
     <div class="mobile-nav-actions">
       <a class="btn btn-primary" href="/contact">Get a Quote</a>

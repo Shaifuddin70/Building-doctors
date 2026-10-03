@@ -88,6 +88,24 @@ function icon(string $name): string
         'approved' => '<svg viewBox="0 0 24 24" aria-hidden="true" ' . $stroke . '><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg>',
         'license' => '<svg viewBox="0 0 24 24" aria-hidden="true" ' . $stroke . '><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7"/><path d="m9.5 9 1.8 1.8L14.5 7.5"/></svg>',
         'clock' => '<svg viewBox="0 0 24 24" aria-hidden="true" ' . $stroke . '><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+        'chevron-down' => '<svg viewBox="0 0 24 24" aria-hidden="true" ' . $stroke . '><path d="m6 9 6 6 6-6"/></svg>',
+        'arrow-right' => '<svg viewBox="0 0 24 24" aria-hidden="true" ' . $stroke . '><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
         default => '',
     };
+}
+
+function service_icon(string $id): string
+{
+    $paths = [
+        'permit-drawings' => '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+        'home-additions' => '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M12 11v6M9 14h6"/>',
+        'basement-permits' => '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M8 20v-3h3v-3h3v-3h2"/>',
+        'site-plans' => '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+        'committee-of-adjustment' => '<path d="M12 3v18M7 21h10M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/>',
+        'structural-reports' => '<path d="M5 4h14M5 20h14M12 4v16"/><path d="M8 4v2M16 4v2M8 18v2M16 18v2"/>',
+    ];
+
+    return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        . ($paths[$id] ?? $paths['permit-drawings'])
+        . '</svg>';
 }

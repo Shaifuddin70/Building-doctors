@@ -11,7 +11,7 @@ declare(strict_types=1);
       <div class="row g-4 g-lg-5">
         <div class="col-12 col-lg-4">
           <a class="brand brand-footer" href="/">
-            <img class="brand-mark" src="/assets/img/brand-mark.png" width="161" height="128" alt="">
+            <img class="brand-mark" src="/assets/img/brand-mark.png?v=20261003" width="480" height="339" alt="">
             <span class="brand-text">
               <span class="brand-name">Building Doctors</span>
               <span class="brand-tag"><?= e($config['tagline']) ?></span>

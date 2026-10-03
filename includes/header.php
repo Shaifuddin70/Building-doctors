@@ -17,7 +17,7 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
   <?php render_seo($meta ?? [], $config); ?>
-  <link rel="icon" href="/assets/img/favicon.png" type="image/png">
+  <link rel="icon" href="/assets/img/favicon.png?v=20261003" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
     <div class="container">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Building Doctors home">
-          <img class="brand-mark" src="/assets/img/brand-mark.png" width="161" height="128" alt="">
+          <img class="brand-mark" src="/assets/img/brand-mark.png?v=20261003" width="480" height="339" alt="">
           <span class="brand-text">
             <span class="brand-name">Building Doctors</span>
             <span class="brand-tag"><?= e($config['tagline']) ?></span>

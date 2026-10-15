@@ -10,7 +10,7 @@ $requestPath = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_P
 $requestPage = preg_replace('/\.php$/', '', $requestPath);
 
 if ($requestPage !== '' && $requestPage !== 'index') {
-    $pages = ['services', 'portfolio', 'about', 'contact'];
+    $pages = ['services', 'portfolio', 'about', 'contact', 'resources'];
     if (in_array($requestPage, $pages, true)) {
         require __DIR__ . '/' . $requestPage . '.php';
         return;

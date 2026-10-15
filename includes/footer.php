@@ -37,8 +37,9 @@ declare(strict_types=1);
           <h2 class="footer-heading">Company</h2>
           <ul class="footer-list">
             <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
             <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/resources">Resources</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/services">All Services</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -74,6 +75,11 @@ declare(strict_types=1);
                 <?php if (!empty($config['social']['instagram'])): ?>
                   <a class="social-link social-link-instagram" href="<?= e($config['social']['instagram']) ?>" target="_blank" rel="noopener" aria-label="Building Doctors on Instagram" title="Instagram">
                     <?= icon('instagram') ?>
+                  </a>
+                <?php endif; ?>
+                <?php if (!empty($config['social']['facebook'])): ?>
+                  <a class="social-link social-link-facebook" href="<?= e($config['social']['facebook']) ?>" target="_blank" rel="noopener" aria-label="Building Doctors on Facebook" title="Facebook">
+                    <?= icon('facebook') ?>
                   </a>
                 <?php endif; ?>
               </div>

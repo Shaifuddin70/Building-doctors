@@ -23,7 +23,7 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20261003v">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20261016b">
   <?= json_ld_business($config) ?>
 </head>
 <body class="<?= e($bodyClass) ?>">
@@ -63,8 +63,8 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
               </div>
             </div>
             <a class="nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+            <a class="nav-link<?= is_active('resources', $currentPage) ?>" href="/resources">Resources</a>
             <a class="nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
-            <a class="nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
           </nav>
 
           <div class="header-actions">
@@ -132,8 +132,8 @@ $bodyClass = trim('page-' . ($currentPage ?? 'home') . ' ' . $pageClass);
         </div>
       </div>
       <a class="mobile-nav-link<?= is_active('portfolio', $currentPage) ?>" href="/portfolio">Portfolio</a>
+      <a class="mobile-nav-link<?= is_active('resources', $currentPage) ?>" href="/resources">Resources</a>
       <a class="mobile-nav-link<?= is_active('about', $currentPage) ?>" href="/about">About</a>
-      <a class="mobile-nav-link<?= is_active('contact', $currentPage) ?>" href="/contact">Contact</a>
     </nav>
     <div class="mobile-nav-actions">
       <a class="btn btn-primary" href="/contact">Get a Quote</a>

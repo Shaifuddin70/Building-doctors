@@ -1912,6 +1912,32 @@ main > section + section {
   color: var(--white);
 }
 
+/* Resources */
+.resource-card {
+  display: grid;
+  gap: 0.85rem;
+  padding: clamp(1.25rem, 2.5vw, 1.65rem);
+  background: var(--card);
+  border: 1px solid var(--line);
+  height: 100%;
+}
+
+.resource-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+
+.resource-card .check-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resource-card .check-list li {
+  color: var(--text-muted);
+}
+
 /* About */
 .about-copy {
   color: var(--text-muted);
@@ -2130,6 +2156,10 @@ main > section + section {
 
 .social-link-instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.social-link-facebook {
+  background: #1877f2;
 }
 
 .site-footer .social-link:hover,
@@ -2538,7 +2568,8 @@ main > section + section {
 .cred-card,
 .contact-card,
 .form-card,
-.project-shot {
+.project-shot,
+.resource-card {
   border-color: var(--line-strong);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -2549,6 +2580,7 @@ main > section + section {
 .process-step:hover,
 .cred-card:hover,
 .service-include-card:hover,
-.service-jump-link:hover {
+.service-jump-link:hover,
+.resource-card:hover {
   border-color: var(--gold-line);
 }

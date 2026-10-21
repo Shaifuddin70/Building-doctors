@@ -43,7 +43,7 @@ function json_ld_business(array $config): string
         'url' => $config['domain'],
         'telephone' => $config['phone_tel'],
         'email' => $config['email'],
-        'image' => rtrim($config['domain'], '/') . '/assets/img/logo-full.png',
+        'image' => rtrim($config['domain'], '/') . '/assets/img/building-doctors.png',
         'address' => [
             '@type' => 'PostalAddress',
             'streetAddress' => $config['address']['street'],

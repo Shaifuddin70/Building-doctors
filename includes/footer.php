@@ -10,12 +10,8 @@ declare(strict_types=1);
     <div class="container">
       <div class="row g-4 g-lg-5">
         <div class="col-12 col-lg-4">
-          <a class="brand brand-footer" href="/">
-            <img class="brand-mark" src="/assets/img/brand-mark.png?v=20261003" width="480" height="339" alt="">
-            <span class="brand-text">
-              <span class="brand-name">Building Doctors</span>
-              <span class="brand-tag"><?= e($config['tagline']) ?></span>
-            </span>
+          <a class="brand brand-footer" href="/" aria-label="Building Doctors home">
+            <img class="brand-logo" src="/assets/img/building-doctors-light.png?v=20261021c" width="2172" height="724" alt="Building Doctors">
           </a>
           <p class="footer-blurb">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across Greater Ottawa.</p>
           <div class="footer-cta d-flex flex-wrap gap-2 mt-3">

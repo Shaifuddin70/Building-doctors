@@ -32,177 +32,186 @@ $meta = [
 ];
 
 require __DIR__ . '/includes/header.php';
+
+$homeFeatured = array_slice($portfolio, 0, 3);
+$homeSteps = [
+    ['01', 'Scope & Review', 'Share your address and project goals. We confirm the likely permit path and drawing requirements.'],
+    ['02', 'Site Measure', 'We measure existing conditions and gather the information needed for accurate drawings.'],
+    ['03', 'Drawings & Coordination', 'We prepare permit drawings and coordinate structural or other consultants when required.'],
+    ['04', 'Submit & Respond', 'We support municipal submission and help respond to city comments through approval.'],
+];
 ?>
 
-<section class="site-hero" style="--hero-image: url('/assets/img/hero-home.jpg')">
-  <div class="container h-100">
-    <div class="row align-items-end site-hero-row">
-      <div class="col-12 col-lg-10 col-xl-9">
-        <p class="site-hero-eyebrow">Building Doctors · Ottawa</p>
-        <h1>We draw the plans that get your project approved.</h1>
-        <p class="site-hero-lead">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across Greater Ottawa.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="/contact">Get a Quote</a>
-          <a class="btn btn-secondary" href="/services">View Services</a>
-        </div>
-      </div>
+<section class="home-hero">
+  <div class="home-hero-media" aria-hidden="true">
+    <div class="home-hero-image" style="background-image: url('/assets/img/hero-bg.png')"></div>
+    <div class="home-hero-veil"></div>
+  </div>
+  <div class="container home-hero-copy">
+    <p class="home-hero-eyebrow">
+      <span>Ottawa · P.Eng licensed</span>
+    </p>
+    <h1 class="home-hero-title">
+      <span class="home-line"><span>We draw the plans</span></span>
+      <span class="home-line"><span>that get your project</span></span>
+      <span class="home-line"><span>approved.</span></span>
+    </h1>
+    <p class="home-hero-lead">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across Greater Ottawa.</p>
+    <div class="home-hero-actions">
+      <a class="btn btn-primary" href="/contact">Get a Quote <span aria-hidden="true">→</span></a>
+      <a class="btn btn-secondary" href="/services">View Services</a>
     </div>
   </div>
 </section>
 
-<section class="proof-band">
+<section class="home-proof" id="home-proof">
   <div class="container">
-    <div class="proof-card">
-      <p class="proof-intro">Trusted across Greater Ottawa for permit-ready drawings</p>
-      <ul class="proof-stats">
-        <?php foreach ($config['stats'] as $stat): ?>
-          <li class="proof-stat">
-            <span class="proof-icon"><?= icon($stat['icon'] ?? '') ?></span>
-            <div>
-              <strong><?= e($stat['value']) ?></strong>
-              <span class="proof-label"><?= e($stat['label']) ?></span>
-            </div>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
+    <ul class="home-proof-grid">
+      <?php foreach ($config['stats'] as $stat): ?>
+        <li class="home-proof-item reveal">
+          <span class="home-proof-icon"><?= icon($stat['icon'] ?? '') ?></span>
+          <strong><?= e($stat['value']) ?></strong>
+          <span><?= e($stat['label']) ?></span>
+        </li>
+      <?php endforeach; ?>
+    </ul>
   </div>
 </section>
 
-<section class="section section-white">
+<section class="section home-services" id="home-services">
   <div class="container">
-    <div class="row mb-4 mb-lg-5">
-      <div class="col-12 col-lg-8">
+    <div class="home-split-head reveal">
+      <div>
         <span class="eyebrow">Our Services</span>
-        <h2 class="section-title">Design, drafting, and engineering — built for Ottawa approvals.</h2>
-        <p class="section-lead">From basement suites to additions and Committee of Adjustment applications, we deliver submission-ready packages that keep construction moving.</p>
+        <h2 class="section-title">Six disciplines. One approval-first studio.</h2>
       </div>
+      <p class="section-lead mb-0">Every package is drawn for Ottawa review — not just for the board.</p>
     </div>
-    <div class="row g-4">
-      <?php foreach ($services as $i => $service): ?>
-        <div class="col-12 col-md-6 col-lg-4">
-          <article class="service-card h-100 reveal">
-            <div class="service-index"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></div>
-            <h3><?= e($service['title']) ?></h3>
-            <p><?= e($service['short']) ?></p>
-            <a class="link-arrow" href="/services#<?= e($service['id']) ?>">Learn more</a>
-          </article>
-        </div>
-      <?php endforeach; ?>
+    <div class="home-services-stage">
+      <div class="home-services-list">
+        <?php foreach ($services as $i => $service): ?>
+          <a class="home-service<?= $i === 0 ? ' is-active' : '' ?>" href="/services#<?= e($service['id']) ?>" data-home-service="<?= e($service['id']) ?>">
+            <span class="home-service-index"><?= str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
+            <span class="home-service-copy">
+              <strong><?= e($service['title']) ?></strong>
+              <em><?= e($service['tagline'] ?? '') ?></em>
+            </span>
+            <span class="home-service-go" aria-hidden="true"><?= icon('arrow-right') ?></span>
+          </a>
+        <?php endforeach; ?>
+      </div>
+      <div class="home-services-preview" aria-hidden="true">
+        <?php foreach ($services as $i => $service): ?>
+          <figure class="home-service-shot<?= $i === 0 ? ' is-active' : '' ?>" data-home-shot="<?= e($service['id']) ?>">
+            <img src="<?= e($service['image']) ?>" alt="" width="900" height="700">
+            <figcaption><?= e($service['title']) ?></figcaption>
+          </figure>
+        <?php endforeach; ?>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section-navy">
+<section class="section section-navy home-process-band">
   <div class="container">
-    <div class="row mb-4 mb-lg-5">
-      <div class="col-12 col-lg-8">
+    <div class="home-split-head reveal">
+      <div>
         <span class="eyebrow">How It Works</span>
-        <h2 class="section-title text-white">A clear path from first call to permit approval.</h2>
-        <p class="section-lead text-white-50">Ottawa planning and permitting can be confusing. We keep the process organized so you always know the next step.</p>
+        <h2 class="section-title text-white">Four steps from first call to stamped drawings.</h2>
       </div>
+      <p class="section-lead text-white-50 mb-0">Ottawa permitting can stall a build. We keep the path short, visible, and moving.</p>
     </div>
-    <div class="row g-3">
-      <?php
-      $steps = [
-          ['01', 'Scope & Review', 'Share your address and project goals. We confirm the likely permit path and drawing requirements.'],
-          ['02', 'Site Measure', 'We measure existing conditions and gather the information needed for accurate drawings.'],
-          ['03', 'Drawings & Coordination', 'We prepare permit drawings and coordinate structural or other consultants when required.'],
-          ['04', 'Submit & Respond', 'We support municipal submission and help respond to city comments through approval.'],
-      ];
-      foreach ($steps as $step):
-      ?>
-        <div class="col-12 col-md-6 col-lg-3">
-          <article class="process-step h-100 reveal">
-            <div class="num"><?= e($step[0]) ?></div>
-            <h3><?= e($step[1]) ?></h3>
-            <p><?= e($step[2]) ?></p>
-          </article>
-        </div>
+    <ol class="home-process" data-home-process>
+      <?php foreach ($homeSteps as $i => $step): ?>
+        <li class="home-process-step reveal" style="--delay: <?= $i * 0.08 ?>s">
+          <span class="home-process-num"><?= e($step[0]) ?></span>
+          <h3><?= e($step[1]) ?></h3>
+          <p><?= e($step[2]) ?></p>
+        </li>
       <?php endforeach; ?>
-    </div>
+    </ol>
   </div>
 </section>
 
-<section class="section section-concrete">
+<section class="section section-concrete home-work">
   <div class="container">
-    <div class="row mb-4 mb-lg-5">
-      <div class="col-12 col-lg-8">
+    <div class="home-split-head reveal">
+      <div>
         <span class="eyebrow">Selected Work</span>
         <h2 class="section-title">Projects that got built.</h2>
-        <p class="section-lead">Permit drawings, additions, structural packages, and site plans delivered across the Greater Ottawa Area.</p>
       </div>
+      <a class="link-arrow" href="/portfolio">View full portfolio</a>
     </div>
-    <div class="row g-4">
-      <?php foreach (array_slice($portfolio, 0, 3) as $item): ?>
-        <div class="col-12 col-md-6 col-lg-4">
+    <div class="home-work-grid">
+      <?php foreach ($homeFeatured as $i => $item): ?>
+        <div class="home-work-item home-work-item-<?= $i + 1 ?>">
           <?php require __DIR__ . '/includes/portfolio-card.php'; ?>
         </div>
       <?php endforeach; ?>
     </div>
-    <div class="mt-4">
-      <a class="btn btn-outline" href="/portfolio">View Full Portfolio</a>
-    </div>
   </div>
 </section>
 
-<?php foreach (array_slice($portfolio, 0, 3) as $item) {
+<?php foreach ($homeFeatured as $item) {
     require __DIR__ . '/includes/portfolio-modal.php';
 } ?>
 
-<section class="section section-white">
+<section class="section section-white home-quotes">
   <div class="container">
-    <div class="row mb-4 mb-lg-5">
-      <div class="col-12 col-lg-8">
+    <div class="home-quotes-layout">
+      <div class="reveal">
         <span class="eyebrow">Client Proof</span>
         <h2 class="section-title">Approved on the first submission.</h2>
         <p class="section-lead">Homeowners, landlords, and contractors trust Building Doctors for drawings that clear municipal review.</p>
       </div>
-    </div>
-    <div class="row g-4">
-      <?php foreach (array_slice($testimonials, 0, 3) as $item): ?>
-        <div class="col-12 col-md-6 col-lg-4">
-          <article class="testimonial-card h-100 reveal">
+      <div class="home-quote-stage" data-home-quotes>
+        <?php foreach ($testimonials as $i => $item): ?>
+          <figure class="home-quote<?= $i === 0 ? ' is-active' : '' ?>">
             <blockquote>“<?= e($item['quote']) ?>”</blockquote>
-            <div class="testimonial-person">
-              <div class="avatar"><?= e($item['initials']) ?></div>
-              <div>
+            <figcaption>
+              <span class="avatar"><?= e($item['initials']) ?></span>
+              <span>
                 <strong><?= e($item['name']) ?></strong>
-                <span><?= e($item['role']) ?></span>
-              </div>
-            </div>
-          </article>
+                <?= e($item['role']) ?>
+              </span>
+            </figcaption>
+          </figure>
+        <?php endforeach; ?>
+        <div class="home-quote-dots" role="tablist" aria-label="Testimonials">
+          <?php foreach ($testimonials as $i => $item): ?>
+            <button type="button" class="<?= $i === 0 ? 'is-active' : '' ?>" aria-label="Show quote <?= $i + 1 ?>" data-home-quote="<?= $i ?>"></button>
+          <?php endforeach; ?>
         </div>
-      <?php endforeach; ?>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section-navy">
+<section class="home-areas">
   <div class="container">
-    <div class="row mb-4">
-      <div class="col-12 col-lg-8">
-        <span class="eyebrow">Service Area</span>
-        <h2 class="section-title text-white">Serving Ottawa and surrounding communities.</h2>
-        <p class="section-lead text-white-50">Locally based in Nepean with deep familiarity with City of Ottawa permit and planning processes.</p>
-      </div>
+    <div class="home-areas-copy reveal">
+      <span class="eyebrow">Service Area</span>
+      <h2 class="section-title">Greater Ottawa, covered.</h2>
     </div>
-    <div class="area-cloud reveal">
-      <?php foreach ($config['service_areas'] as $area): ?>
-        <span class="area-pill"><?= e($area) ?></span>
-      <?php endforeach; ?>
+  </div>
+  <div class="home-areas-marquee" aria-hidden="true">
+    <div class="home-areas-track">
+      <?php for ($pass = 0; $pass < 2; $pass++): ?>
+        <?php foreach ($config['service_areas'] as $area): ?>
+          <span><?= e($area) ?></span>
+        <?php endforeach; ?>
+      <?php endfor; ?>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="home-cta">
   <div class="container">
-    <div class="cta-band reveal row align-items-center g-4">
-      <div class="col-12 col-lg-7">
-        <h2>Tell us what you’re building.</h2>
-        <p>Most packages are ready in 10–14 business days. We respond within one business day.</p>
-      </div>
-      <div class="col-12 col-lg-5 d-flex flex-wrap gap-3 justify-content-lg-end">
+    <div class="home-cta-panel reveal">
+      <p class="home-hero-eyebrow"><span>Start a project</span></p>
+      <h2>Tell us what you’re building.</h2>
+      <p>Most packages are ready in 10–14 business days. We reply within one business day.</p>
+      <div class="home-hero-actions">
         <a class="btn btn-primary" href="/contact">Request a Quote</a>
         <a class="btn btn-secondary" href="tel:<?= e($config['phone_tel']) ?>">Call <?= e($config['phone']) ?></a>
       </div>

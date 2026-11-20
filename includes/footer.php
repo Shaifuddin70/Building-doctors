@@ -11,7 +11,7 @@ declare(strict_types=1);
       <div class="row g-4 g-lg-5">
         <div class="col-12 col-lg-4">
           <a class="brand brand-footer" href="/" aria-label="Building Doctors home">
-            <img class="brand-logo" src="/assets/img/building-doctors-light.png?v=20261021c" width="2172" height="724" alt="Building Doctors">
+            <img class="brand-logo" src="/assets/img/building-doctors-light.svg?v=20261120d" width="1670" height="471" alt="Building Doctors">
           </a>
           <p class="footer-blurb">Architectural drafting, permit drawings, and structural reports for homeowners, contractors, and developers across Greater Ottawa.</p>
           <div class="footer-cta d-flex flex-wrap gap-2 mt-3">
@@ -119,6 +119,6 @@ declare(strict_types=1);
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/main.js?v=20261003b" defer></script>
+  <script src="/assets/js/main.js?v=20261101a" defer></script>
 </body>
 </html>

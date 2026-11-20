@@ -149,4 +149,42 @@
     range.addEventListener("input", update);
     update();
   });
+
+  const homeServices = document.querySelectorAll("[data-home-service]");
+  const homeShots = document.querySelectorAll("[data-home-shot]");
+  const activateService = (id) => {
+    homeServices.forEach((el) => el.classList.toggle("is-active", el.getAttribute("data-home-service") === id));
+    homeShots.forEach((el) => el.classList.toggle("is-active", el.getAttribute("data-home-shot") === id));
+  };
+  homeServices.forEach((el) => {
+    el.addEventListener("mouseenter", () => activateService(el.getAttribute("data-home-service")));
+    el.addEventListener("focus", () => activateService(el.getAttribute("data-home-service")));
+  });
+
+  const quoteStage = document.querySelector("[data-home-quotes]");
+  if (quoteStage) {
+    const quotes = [...quoteStage.querySelectorAll(".home-quote")];
+    const dots = [...quoteStage.querySelectorAll("[data-home-quote]")];
+    let index = 0;
+    let timer;
+    const show = (next) => {
+      index = (next + quotes.length) % quotes.length;
+      quotes.forEach((quote, i) => quote.classList.toggle("is-active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    };
+    const play = () => {
+      if (reduceMotion || quotes.length < 2) return;
+      timer = window.setInterval(() => show(index + 1), 5600);
+    };
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        show(Number(dot.getAttribute("data-home-quote")) || 0);
+        window.clearInterval(timer);
+        play();
+      });
+    });
+    quoteStage.addEventListener("mouseenter", () => window.clearInterval(timer));
+    quoteStage.addEventListener("mouseleave", play);
+    play();
+  }
 })();

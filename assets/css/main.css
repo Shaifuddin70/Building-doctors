@@ -2531,8 +2531,7 @@ main > section + section {
 
   .nav-toggle,
   .mobile-nav,
-  .nav-overlay,
-  .contact-fab {
+  .nav-overlay {
     display: none !important;
   }
 
@@ -2661,11 +2660,13 @@ main > section + section {
 
 .home-hero-eyebrow span {
   display: inline-block;
+  max-width: min(100%, 34rem);
   padding: 0.48rem 0.9rem;
   border-radius: 6px;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
   text-transform: uppercase;
   color: var(--ink);
   background: var(--gold);
@@ -3377,4 +3378,57 @@ main > section + section {
   .home-process-step:hover {
     transform: none;
   }
+}
+
+/* Thank-you / form success */
+.thank-you-section {
+  min-height: min(70vh, 720px);
+  display: flex;
+  align-items: center;
+  padding-top: clamp(6rem, 12vh, 8rem);
+}
+
+.thank-you-panel {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.25rem);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-top: 4px solid var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.thank-you-badge {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.thank-you-panel .eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.thank-you-panel .section-title {
+  margin-inline: auto;
+}
+
+.thank-you-panel .section-lead {
+  margin-inline: auto;
+  margin-bottom: 1.75rem;
+}
+
+.thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
 }

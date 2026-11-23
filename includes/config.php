@@ -42,5 +42,5 @@ return [
         'facebook' => 'https://www.facebook.com/profile.php?id=61593806325657',
     ],
     // Create a form at https://formspree.io and paste your endpoint below.
-    'formspree_endpoint' => 'https://formspree.io/f/YOUR_FORM_ID',
+    'formspree_endpoint' => 'https://formspree.io/f/mzerkvqe',
 ];

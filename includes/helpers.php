@@ -7,7 +7,7 @@ $portfolio = require dirname(__DIR__) . '/content/portfolio.php';
 $testimonials = require dirname(__DIR__) . '/content/testimonials.php';
 
 /**
- * @param array{title?:string,description?:string,path?:string,og_image?:string} $meta
+ * @param array{title?:string,description?:string,path?:string,og_image?:string,robots?:string} $meta
  */
 function render_seo(array $meta, array $config): void
 {
@@ -21,6 +21,9 @@ function render_seo(array $meta, array $config): void
 
     echo '<title>' . htmlspecialchars($fullTitle, ENT_QUOTES, 'UTF-8') . "</title>\n";
     echo '<meta name="description" content="' . htmlspecialchars($description, ENT_QUOTES, 'UTF-8') . "\">\n";
+    if (!empty($meta['robots'])) {
+        echo '<meta name="robots" content="' . htmlspecialchars((string) $meta['robots'], ENT_QUOTES, 'UTF-8') . "\">\n";
+    }
     echo '<link rel="canonical" href="' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . "\">\n";
     echo '<meta property="og:type" content="website">' . "\n";
     echo '<meta property="og:site_name" content="' . htmlspecialchars($site, ENT_QUOTES, 'UTF-8') . "\">\n";

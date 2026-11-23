@@ -10,7 +10,7 @@ $requestPath = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_P
 $requestPage = preg_replace('/\.php$/', '', $requestPath);
 
 if ($requestPage !== '' && $requestPage !== 'index') {
-    $pages = ['services', 'portfolio', 'about', 'contact', 'resources'];
+    $pages = ['services', 'portfolio', 'about', 'contact', 'resources', 'thank-you'];
     if (in_array($requestPage, $pages, true)) {
         require __DIR__ . '/' . $requestPage . '.php';
         return;
@@ -49,7 +49,7 @@ $homeSteps = [
   </div>
   <div class="container home-hero-copy">
     <p class="home-hero-eyebrow">
-      <span>Ottawa · P.Eng licensed</span>
+      <span>Greater Ottawa Area’s Drafting &amp; Design Practice</span>
     </p>
     <h1 class="home-hero-title">
       <span class="home-line"><span>We draw the plans</span></span>

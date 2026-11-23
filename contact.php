@@ -76,9 +76,9 @@ require __DIR__ . '/includes/header.php';
           <h2>Request a quote</h2>
           <p class="form-intro">Send project details below. We’ll reply by email or phone.</p>
 
-          <form action="<?= e($config['formspree_endpoint']) ?>" method="POST" enctype="multipart/form-data">
+          <form action="<?= e($config['formspree_endpoint']) ?>" method="POST">
             <input type="hidden" name="_subject" value="New Building Doctors quote request">
-            <input type="hidden" name="_next" value="<?= e(rtrim($config['domain'], '/') . '/contact?status=success') ?>">
+            <input type="hidden" name="_next" value="<?= e(rtrim($config['domain'], '/') . '/thank-you') ?>">
             <input type="text" name="_gotcha" value="" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="row g-3">
@@ -137,20 +137,10 @@ require __DIR__ . '/includes/header.php';
                 </div>
               </div>
               <div class="col-12">
-                <div class="form-row">
-                  <label for="attachment">Upload sketch or photo (optional)</label>
-                  <input id="attachment" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp">
-                </div>
-              </div>
-              <div class="col-12">
                 <button class="btn btn-primary" type="submit">Send Inquiry</button>
               </div>
             </div>
           </form>
-
-          <?php if (($_GET['status'] ?? '') === 'success'): ?>
-            <div class="form-alert success mt-3">Thank you. Your inquiry was sent. We’ll be in touch shortly.</div>
-          <?php endif; ?>
         </div>
       </div>
     </div>

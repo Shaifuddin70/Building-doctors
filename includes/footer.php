@@ -89,13 +89,13 @@ declare(strict_types=1);
           <p class="mb-0">&copy; <?= date('Y') ?> <?= e($config['site_name']) ?>. All rights reserved.</p>
         </div>
         <div class="col-12 col-md-6 text-md-end">
-          <p class="footer-note mb-0">P.Eng licensed practice. Not an architecture firm.</p>
+          <p class="footer-note mb-0">Drafting | Permit | Design</p>
         </div>
       </div>
     </div>
   </footer>
 
-  <div class="contact-fab d-lg-none" data-fab>
+  <div class="contact-fab" data-fab>
     <div class="contact-fab-menu" id="contact-fab-menu">
       <a class="contact-fab-item" href="tel:<?= e($config['phone_tel']) ?>" aria-label="Call Building Doctors">
         <span class="contact-fab-label">Call</span>
